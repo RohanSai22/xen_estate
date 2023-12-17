@@ -42,12 +42,12 @@ export default function SignUp() {
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl text-center font-semibold my-8 p-3'>
-        SignUp
+        Sign Up
       </h1>
       <form onSubmit={handleSubmit} className=" flex flex-col gap-4 p-3 ">
         <input className="border p-3 rounded-lg"type="text" placeholder='username' id="username"  onChange={handleChange}/>
-        <input className="border p-3 rounded-lg"type="text" placeholder='email' id="email" onChange={handleChange}/>
-        <input className="border p-3 rounded-lg"type="text" placeholder='password' id="password" onChange={handleChange}/>
+        <input className="border p-3 rounded-lg"type="email" placeholder='email' id="email" onChange={handleChange}/>
+        <input className="border p-3 rounded-lg"type="password" placeholder='password' id="password" onChange={handleChange}/>
       <button disabled ={loading} className="bg-purple-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity:80">
        {loading? 'loading...':'Sign Up'}
        </button>
@@ -58,7 +58,7 @@ export default function SignUp() {
           <span className="text-blue-700  flex">Sign in</span>
         </Link>
       </div>
-      {error && <p className="text-red-600">{error}</p>}
+        {error && <p className='text-red-600 gap-3 mt-5'>{error}</p>}
     </div>
   );
 }
