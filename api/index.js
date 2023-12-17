@@ -23,6 +23,15 @@ app.listen(3000,()=>{
 );
 app.use("/api/user",userRouter);
 app.use('/api/auth',authRouter);
+app.use((err,req,res,next)=>{
+  const statusCode=err.statusCode || 500//500-INTERNAL SERVER ERROR
+  const message=err.message || 'Internal Server Error';
+  return res.status(statusCode).json({
+    success:false,
+    statusCode,
+    message,
+  });
+});
 //anything can be sent to client but it is not best practice[best practice is to create seperate api routes ]
 
 //each time we change log in code we need to run server each time which is timeconsuming so we use package named nodemon --npm i nodemon
