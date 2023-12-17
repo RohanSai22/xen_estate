@@ -3,6 +3,7 @@ import {Link ,useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';//using this we can dispatch the function that we have
 
 import { signInStart ,signInSuccess,signInFailure } from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 export default function SignIn() {
   const [formData,setFormData]= useState({});
   const {loading,error}= useSelector((state)=>state.user);
@@ -49,6 +50,7 @@ export default function SignIn() {
       <button disabled ={loading} className="bg-purple-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity:80">
        {loading? 'loading...':'Sign In'}
        </button>
+       <OAuth/>
       </form>
       <div className="p-3 max-wlg mx-auto flex gap-3 mt-5">
         <p>Do not have an account ?</p>
@@ -56,7 +58,7 @@ export default function SignIn() {
           <span className="text-blue-700  flex">Sign Up</span>
         </Link>
       </div>
-      {error && <p className="text-red-600">{error}</p>}
+      {error && <p className="text-red-600  flex p-3 mt-2">{error}</p>}
     </div>
   );
 }

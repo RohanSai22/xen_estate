@@ -23,7 +23,7 @@ app.listen(3000,()=>{
 );
 app.use("/api/user",userRouter);
 app.use('/api/auth',authRouter);
-app.use((err,req,res,next)=>{
+app.use((err,res)=>{
   const statusCode=err.statusCode || 500;//500-INTERNAL SERVER ERROR
   const message=err.message || 'Internal Server Error';
   return res.status(statusCode).json({

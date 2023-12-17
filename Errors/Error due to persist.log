@@ -1,0 +1,40 @@
+react-dom.development.js:29840 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+VM1501:1  Warning: Received `true` for a non-boolean attribute `flex-wrap`.
+
+If you want to write it to the DOM, pass a string instead: flex-wrap="true" or flex-wrap={value.toString()}.
+    at h1
+    at a
+    at LinkWithRef (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=1d082d08:4760:5)
+    at div
+    at header
+    at Header
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=1d082d08:3925:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=1d082d08:4658:5)
+    at App
+    at PersistGate2 (http://localhost:5173/node_modules/.vite/deps/redux-persist_integration_react.js?v=1d082d08:90:5)
+    at Provider (http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=1d082d08:1089:3)
+eval @ VM1501:1
+printWarning @ react-dom.development.js:86
+error @ react-dom.development.js:60
+validateProperty$1 @ react-dom.development.js:3765
+warnUnknownProperties @ react-dom.development.js:3803
+validateProperties$2 @ react-dom.development.js:3827
+validatePropertiesInDevelopment @ react-dom.development.js:9541
+setInitialProperties @ react-dom.development.js:9830
+finalizeInitialChildren @ react-dom.development.js:10950
+completeWork @ react-dom.development.js:22193
+completeUnitOfWork @ react-dom.development.js:26596
+performUnitOfWork @ react-dom.development.js:26568
+workLoopSync @ react-dom.development.js:26466
+renderRootSync @ react-dom.development.js:26434
+performSyncWorkOnRoot @ react-dom.development.js:26085
+flushSyncCallbacks @ react-dom.development.js:12042
+commitRootImpl @ react-dom.development.js:26959
+commitRoot @ react-dom.development.js:26682
+finishConcurrentRender @ react-dom.development.js:25981
+performConcurrentWorkOnRoot @ react-dom.development.js:25809
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 22 more frames
+Show less
