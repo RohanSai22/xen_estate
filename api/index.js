@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO)
 //if we want to share it in github then we need to hide it
 
 const app = express();//many methods to use app.listen is used to listen a port number
-app.use(express.json());
+app.use(express.json());//allows json as input so we recive jsons of user details using post
 app.listen(3000,()=>{
     console.log('Server is running on port 3000!');
 }

@@ -1,9 +1,9 @@
 //creating user Model
-import mongoose from{mongoose};
+import mongoose from 'mongoose';
 
 //user data entry to database with requirements
 const userSchema=new mongoose.Schema({
-    userName:{
+    username:{
         type:String,
         required:true,
         unique:true,
@@ -19,5 +19,5 @@ const userSchema=new mongoose.Schema({
     }
 },{timestamps:true,});
 //time of creation and updation of users
-const User= mongoose.model('User',userSchema);
+var User= mongoose.model('User',userSchema);
 export default User;
