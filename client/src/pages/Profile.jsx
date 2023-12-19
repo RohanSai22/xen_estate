@@ -1,5 +1,5 @@
 import { useState ,useRef,useEffect } from 'react';
-import {getDownloadURL, getStorage ,ref, uploadBytesResumable} from 'firebase/storage';
+import {getDownloadURL, getStorage ,list,ref, uploadBytesResumable} from 'firebase/storage';
 import {app} from '../firebase'
 import { useSelector } from 'react-redux'
 import { updateUserSuccess,updateUserFailure,updateUserStart,deleteUserFailure,deleteUserStart,deleteUserSuccess,signOutUserFailure,signOutUserStart,signOutUserSuccess } from '../redux/user/userSlice';
@@ -13,6 +13,8 @@ export default function Profile() {
   const [fileUploadError,setFileUploadError]=useState(false);
   const [formData,setFormData]=useState({});
   const [updateSuccess,setUpdateSuccess]=useState(false);
+  const [showListingsError,setShowListingsError]=useState(false);
+  const [userListings,setUserListings]=useState([]);
   const dispatch= useDispatch();
 
   useEffect(()=>{
@@ -109,6 +111,22 @@ export default function Profile() {
     }
   };
 
+  const handleShowListings= async (e)=>{
+    try{
+      setShowListingsError(false);
+      const res=await fetch(`/api/user/listings/${currentUser._id}`);
+      const data=await res.json();
+      if(data.success=== false){
+        setShowListingsError(true);
+        return;
+      }
+      setUserListings(data);
+    }
+    catch(error){
+      setShowListingsError(true);
+    }
+  };
+
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className="text-3xl font-semibold text-center my-7">
@@ -164,8 +182,33 @@ export default function Profile() {
       </div>
     <p className="text-red-700   mt-5">{error?"Invalid response. Please Retry":" "}</p>
     <p className="text-green-600   mt-5">{updateSuccess?"User is updated Successfully":" "}</p>
+    <button onClick={handleShowListings} className='text-green-700 w-full'>Show Listings</button>
+    <p className="text-red-700 mt-5">
+      {showListingsError?"Error showing the listings":''}
+      </p>
+      {
+        userListings && userListings.length>0  &&
+        userListings.map((listing)=>(
+          <div className ='gap-4 border rouded-lg flex items-center justify-between p-3' key={listing._id}>
+            <Link to={`/listing/${listing._id}`}>
+              <img className='h-16 w-16 object-contain' src={listing.imageUrls[0]} alt='listing image'/>
+
+            </Link>
+            <Link  className='text-purple-700  font-semibold flex-1 hover:underline  truncate' to={`/listing/${listing._id}`}>
+              <p >{listing.name}</p>
+            </Link>
+            <div className=' flex flex-col item-center'>
+              <button className='text-red-700 uppercase'>
+                Delete</button>
+                <button className='text-green-700 uppercase'>
+                  Edit
+                </button>
+            </div>
+          </div>
+        ))
+        }
     </div>
-  )
+  );
 }
 //Rules to be changed to make read and write in github
 /*
