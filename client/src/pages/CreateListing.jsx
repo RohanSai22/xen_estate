@@ -163,7 +163,7 @@ export default function CreateListing() {
             setLoading(false);
             if(data.success === false){
                 setError(data.message);
-            };
+            }//the error was that i placed a semicolon here
             navigate(`/listing/${data._id}`);
         }
         catch(error){
