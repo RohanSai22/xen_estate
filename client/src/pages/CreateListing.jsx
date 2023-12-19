@@ -16,7 +16,7 @@ export default function CreateListing() {
         type:'rent',
         bedrooms:1,
         bathrooms:1,
-        regularPrice:5000,
+        regularPrice:0,
         discountPrice:0,
         offer:false,
         parking:false,
@@ -184,8 +184,7 @@ export default function CreateListing() {
                 placeholder='Name' 
                 className='rounded-lg p-3 border ' 
                 id='name' 
-                maxLength='62' 
-                minLength='10' 
+                maxLength='62'
                 required
                 onChange={handleChange}
                 value={formData.name}
