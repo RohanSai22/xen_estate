@@ -32,6 +32,8 @@ export default function CreateListing() {
     const [loading,setLoading]=useState(false);
 
     console.log(formData);
+
+
     const handleImageSubmit = (e)=>{
         if(files.length>0 && files.length + formData.imageUrls.length < 7){
             setUploading(true);
@@ -134,7 +136,7 @@ export default function CreateListing() {
         if(e.target.type==='number' || e.target.type==='text' || e.target.type==='textarea'){
             setFormData({
                 ...formData,
-                [e.target.id]: e.target.value
+                [e.target.id]: e.target.value,
             })
         }
         };
@@ -142,8 +144,8 @@ export default function CreateListing() {
     const handleSubmit =async (e)=>{
         e.preventDefault();
         try{
-            if(formData.imageUrls.length < 1) return setError('You must upload atleast one image')
-            if( +formData.regularPrice < +formData.discountPrice) return setError("Discount price must be lower than regular price")
+            if(formData.imageUrls.length < 1) return setError('You must upload atleast one image');
+            if( +formData.regularPrice < +formData.discountPrice) return setError("Discount price must be lower than regular price");
 
             setLoading(true);
             setError(false);
