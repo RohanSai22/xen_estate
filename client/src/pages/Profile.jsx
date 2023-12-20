@@ -188,6 +188,9 @@ export default function Profile() {
       </p>
       {
         userListings && userListings.length>0  &&
+        <div className='flex flex-col gap-4'>
+          <h1 className='text-center mt-4 text-2xl font-semibold '>Your Listings</h1>
+        {
         userListings.map((listing)=>(
           <div className ='gap-4 border rouded-lg flex items-center justify-between p-3' key={listing._id}>
             <Link to={`/listing/${listing._id}`}>
@@ -205,7 +208,9 @@ export default function Profile() {
                 </button>
             </div>
           </div>
-        ))
+        
+        ))}
+        </div>
         }
     </div>
   );
