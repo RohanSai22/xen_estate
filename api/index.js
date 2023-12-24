@@ -39,18 +39,6 @@ app.use((err,res)=>{
     message,
   });
 });
-app.use((req, res, next) => {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-app.use((err, req, res, next) => {
-  res.locals.error = err;
-  const status = err.status || 500;
-  res.status(status);
-  res.render('error');
-});
 //anything can be sent to client but it is not best practice[best practice is to create seperate api routes ]
 
 //each time we change log in code we need to run server each time which is timeconsuming so we use package named nodemon --npm i nodemon
